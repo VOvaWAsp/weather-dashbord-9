@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Погодний дашборд</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/script.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <h1>Погодний дашборд</h1>
+    </header>
+
+    <main>
+
+        <section class="input-selection">
+
+            <h2>Пошук погоди</h2>
+
+            <form id="weather-search-form">
+
+                <label for="weather-input">
+                    Назва міста:
+                </label>
+
+                <input
+                    type="text"
+                    id="weather-input"
+                    class="city-input"
+                    name="city"
+                    placeholder="Введіть назву міста"
+                    required
+                >
+
+                <button type="submit" class="search-button">
+                    Знайти
+                </button>
+
+            </form>
+
+        </section>
+
+        <p class="error" style="display: none;">
+            Не вдалося знайти місто. Спробуйте ще раз.
+        </p>
+
+        <section
+            id="current-weather"
+            class="container-single-weather"
+            style="display: none;"
+        >
+
+            <h2>Поточна погода</h2>
+
+            <img
+                class="weather-img"
+                src=""
+                alt="Погода"
+            >
+
+            <h3 class="city"></h3>
+
+            <p class="temp"></p>
+
+            <p class="description"></p>
+
+        </section>
+
+        <p id="avg-temp"></p>
+
+        <section
+            id="forecast"
+            class="container-forecast-weather"
+        >
+
+            <h2 class="title">
+                Прогноз погоди
+            </h2>
+
+        </section>
+
+        <section class="input-selection">
+
+            <h2>Поточна погода (Open-Meteo)</h2>
+
+            <button
+                type="button"
+                id="update-weather-button"
+                class="search-button"
+            >
+                Оновити
+            </button>
+
+            <p
+                id="loading-message"
+                style="display: none;"
+            >
+                Завантаження...
+            </p>
+
+            <p
+                id="api-error"
+                class="error"
+                style="display: none;"
+            >
+                Не вдалося отримати прогноз погоди
+            </p>
+
+            <div id="open-meteo-result">
+
+                <p id="api-temperature"></p>
+
+                <p id="api-description"></p>
+
+                <p id="api-time"></p>
+
+            </div>
+
+        </section>
+
+        <section class="input-selection">
+
+            <h2>Додати запис про погоду</h2>
+
+            <form id="weather-form">
+
+                <label for="day">
+                    День:
+                </label>
+
+                <input
+                    type="text"
+                    id="day"
+                    name="day"
+                    placeholder="Наприклад, 28.10.2026"
+                    required
+                >
+
+                <label for="tempC">
+                    Температура (°C):
+                </label>
+
+                <input
+                    type="number"
+                    id="tempC"
+                    name="tempC"
+                    min="-50"
+                    max="50"
+                    step="any"
+                    placeholder="Наприклад, 15"
+                    required
+                >
+
+                <label for="description">
+                    Опис погоди:
+                </label>
+
+                <input
+                    type="text"
+                    id="description"
+                    name="description"
+                    placeholder="Наприклад, Сонячно"
+                >
+
+                <button
+                    type="submit"
+                    class="search-button"
+                >
+                    Додати запис
+                </button>
+
+            </form>
+
+        </section>
+
+        <section class="input-selection">
+
+            <h2>Додані записи</h2>
+
+            <div id="records-list"></div>
+
+            <button
+                type="button"
+                id="hottest-day-button"
+                class="search-button"
+            >
+                Найтепліший день
+            </button>
+
+            <p
+                id="hottest-day-result"
+                aria-live="polite"
+            ></p>
+
+        </section>
+
+    </main>
+
+    <footer>
+
+        <p>Погодний дашборд © 2026</p>
+
+    </footer>
+
+    <script src="js/app.js"></script>
+
+</body>
+
+</html>
